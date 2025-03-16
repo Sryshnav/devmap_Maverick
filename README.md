@@ -1,7 +1,7 @@
 Team Name: 
    Maverick
    
-Team members and their roles: 
+Team members and their roles:/n
    1)Sreya V (Frontend developer)
    2)Sryshnav CM (Backend developer)
    
