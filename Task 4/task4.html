@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expression Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="Task4CSS.css">
 </head>
 <body>
     <div class="error-popup" id="errorPopup">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="container">
-        <h1>Expression Calculator</h1>
+        <h1>Calculator</h1>
         <div class="form-group">
             <label for="expression">Enter Arithmetic Expression</label>
             <input type="text" id="expression" name="expression" required placeholder="Example: 2 * (3 + 4) - 5 / 2">
@@ -43,15 +43,14 @@
                 }
                 
                 try {
-                    // Evaluate the expression using the safer evaluateExpression function
+                    
                     const result = evaluateExpression(expression);
                     
                     if (isNaN(result) || !isFinite(result)) {
                         showError("Invalid result. Please check your expression.");
                         return;
                     }
-                    
-                    // Display the result
+
                     resultValue.textContent = result;
                     expressionDisplay.textContent = "Expression: " + expression;
                     resultContainer.style.display = "block";
@@ -61,16 +60,12 @@
             });
 
             function evaluateExpression(expression) {
-                // First, validate the expression to avoid dangerous inputs
                 if (!isValidExpression(expression)) {
                     throw new Error("Invalid expression");
                 }
-                
-                // Replace ^ with ** for exponentiation to follow BODMAS
                 expression = expression.replace(/\^/g, '**');
                 
                 try {
-                    // Create a safe evaluation method
                     return Function('"use strict"; return (' + expression + ')')();
                 } catch (error) {
                     throw new Error("Calculation error");
@@ -78,7 +73,6 @@
             }
             
             function isValidExpression(expression) {
-                // Only allow valid math expressions with numbers, operators, and parentheses
                 const validExpressionRegex = /^[0-9\s\(\)\+\-\*\/\^\.\,]+$/;
                 return validExpressionRegex.test(expression);
             }
@@ -86,14 +80,10 @@
             function showError(message) {
                 errorPopup.textContent = message;
                 errorPopup.style.display = 'block';
-                
-                // Automatically hide the popup after 3 seconds
                 setTimeout(() => {
                     errorPopup.style.display = 'none';
                 }, 3000);
             }
-
-            // Add keypress event for Enter key
             expressionInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     calculateBtn.click();
