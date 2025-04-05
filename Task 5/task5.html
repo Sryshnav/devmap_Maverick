@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List Application</title>
+    <link rel="stylesheet" href="task5.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task List</h1>
+        
+        <div class="form-group">
+            <label for="taskInput">New Task</label>
+            <input type="text" id="taskInput" placeholder="Enter your task...">
+        </div>
+        
+        <button class="submit-btn" id="addTaskBtn">Add Task</button>
+        
+        <div class="tasks-container">
+            <ul class="task-list" id="taskList">
+                <li class="no-tasks">No tasks added yet</li>
+            </ul>
+        </div>
+        
+        <div class="error-popup" id="errorPopup">
+            Please enter a task
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            const errorPopup = document.getElementById('errorPopup');
+
+            function addTask() {
+                const taskText = taskInput.value.trim();
+                
+                if (taskText === '') {
+
+                    errorPopup.style.display = 'block';
+                    setTimeout(() => {
+                        errorPopup.style.display = 'none';
+                    }, 3000);
+                    return;
+                }
+ 
+                const noTasksMsg = document.querySelector('.no-tasks');
+                if (noTasksMsg) {
+                    noTasksMsg.remove();
+                }
+
+                const taskItem = document.createElement('li');
+                taskItem.className = 'task-item';
+                taskItem.textContent = taskText;
+
+                taskList.appendChild(taskItem);
+
+                taskInput.value = '';
+                taskInput.focus();
+            }
+ 
+            addTaskBtn.addEventListener('click', addTask);
+            
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
