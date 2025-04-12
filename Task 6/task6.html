@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="task6.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <div class="form-group">
+            <label for="taskInput">Add a new task</label>
+            <input type="text" id="taskInput" placeholder="Enter your task here">
+        </div>
+        <button class="submit-btn" id="addTaskBtn">Add Task</button>
+        
+        <div class="tasks-container">
+            <h2>My Tasks</h2>
+            <ul class="task-list" id="taskList">
+
+            </ul>
+            <p class="no-tasks" id="noTasks">No tasks yet. Add one above!</p>
+        </div>
+    </div>
+
+    <div class="error-popup" id="errorPopup">Please enter a task!</div>
+
+    <script src="task6.js"></script>
+</body>
+</html>
