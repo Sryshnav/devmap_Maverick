@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="finalTask.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <div class="form-group">
+            <label for="taskInput">Add a new task</label>
+            <input type="text" id="taskInput" placeholder="Enter your task here">
+        </div>
+        <button class="submit-btn" id="addTaskBtn">Add Task</button>
+        
+        <div class="tasks-container">
+            <div class="task-header">
+                <h2>My Tasks</h2>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+            </div>
+            <ul class="task-list" id="taskList">
+                <!-- Tasks will be added here dynamically -->
+            </ul>
+            <p class="no-tasks" id="noTasks">No tasks yet. Add one above!</p>
+            <button class="clear-completed-btn" id="clearCompletedBtn">Clear All Completed</button>
+        </div>
+    </div>
+
+    <div class="error-popup" id="errorPopup">Please enter a task!</div>
+    
+    <!-- Edit Task Modal -->
+    <div class="edit-modal" id="editModal">
+        <div class="edit-modal-content">
+            <h3>Edit Task</h3>
+            <input type="text" id="editTaskInput" placeholder="Update your task">
+            <div class="edit-modal-actions">
+                <button id="cancelEditBtn">Cancel</button>
+                <button id="saveEditBtn">Save</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <script src="finalTask.js"></script>
+</body>
+</html>
